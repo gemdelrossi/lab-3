@@ -1,0 +1,71 @@
+---
+title: "lab-3"
+author: "Gemma Del Rossi"
+date: "2/26/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Data 
+```{r data, results = "hide", warning=FALSE}
+# install.packages("dslabs")
+library(dslabs) 
+library(tidyverse)
+
+data <-gapminder
+
+dim(data)
+summary(data)
+
+gap2011 <- data %>% 
+  as_tibble() %>% 
+  filter(year == 2011)
+
+dim(gap2011)
+summary(gap2011)
+class(gap2011)
+colnames(gap2011)
+
+par(mar=c(3,3,3,3))
+
+```
+
+## Life expectancy 
+
+```{r life-expect, results = "hide", warning=FALSE}
+ ggplot(data = gap2011) + 
+  geom_point(mapping = aes(x = gdp, y = life_expectancy))
+
+ggplot(data = gap2011) +
+  geom_histogram(mapping = aes(x = life_expectancy)) +
+  facet_wrap(~ continent, nrow=2)
+ 
+```
+
+## Fertility 
+
+```{r fertility, results = "hide", warning=FALSE}
+ggplot(data=gap2011) +
+  geom_point(mapping = aes(x = gdp, y = fertility, color = continent)) +
+  facet_wrap(~ continent, nrow = 2)
+
+ggplot(data = gap2011) +
+  geom_point(mapping = aes(x = fertility, y = infant_mortality, 
+                           color = continent)) +
+  geom_smooth(mapping = aes(x = fertility, y = infant_mortality))
+
+```
+
+
+## Infant Mortality
+
+```{r mortality, results = "hide", warning=FALSE }
+ggplot(data = gap2011) +
+  geom_point(mapping = aes(x = gdp, y = infant_mortality, 
+                           color = continent)) +
+  facet_wrap(~ continent, nrow = 2)
+
+```
