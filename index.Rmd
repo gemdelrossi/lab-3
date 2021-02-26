@@ -1,0 +1,16 @@
+---
+title: "Lab 3 Website"
+author: "Gemma Del Rossi"
+date: "2/26/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## This is the homepage for my Lab 3 website!
+
+This website showcases the results of Lab 3 where we did exploratory data visualization. 
+
+Welcome. :)
